@@ -10,16 +10,27 @@ class Training:
                  action: int,
                  duration: float,
                  weight: float,
+                 M_IN_KM: int,
+                 LEN_STEP: float,
+                 steps: int
                  ) -> None:
-        pass
+        self.action = action
+        self.duration = duration
+        self.weight = weight
+        self.M_IN_KM = M_IN_KM
+        self.LEN_STEP = LEN_STEP
+        self.steps = steps
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
-        pass
+        distance = self.steps * self.LEN_STEP / self.M_IN_KM
+        return distance
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
-        pass
+        distance = Training.get_distance(self)
+        mean_speed = distance/ self.duration
+        return mean_speed
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
@@ -27,13 +38,12 @@ class Training:
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        pass
+        return InfoMessage.get_message()
 
 
 class Running(Training):
     """Тренировка: бег."""
     pass
-
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
