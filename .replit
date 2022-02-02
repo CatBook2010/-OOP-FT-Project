@@ -1,2 +1,4 @@
-language = "bash"
-run = ""
+language = ""
+# run = "python3 homework.py"
+# run = "pip install pytest"
+run = "pytest"
