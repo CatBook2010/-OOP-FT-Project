@@ -43,7 +43,25 @@ class Training:
 
 class Running(Training):
     """Тренировка: бег."""
-    pass
+    def __init__(self,
+                 action: int,
+                 duration: float,
+                 weight: float,
+                 M_IN_KM: int,
+                 LEN_STEP: float,
+                 steps: int) -> None:
+
+                     super().__init__(action, duration, weight, M_IN_KM, LEN_STEP, steps)
+
+    def get_spent_calories(self):
+            mean_spead = Training.get_mean_spead()
+
+            coeff_calorie_1 = 18
+            coeff_calorie_2 = 20
+
+            calories = (coeff_calorie_1 * mean_spead - coeff_calorie_2) * self.weight / self.M_IN_KM * self.LEN_STEP
+
+            return calories
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
